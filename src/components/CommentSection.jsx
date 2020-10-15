@@ -29,7 +29,14 @@ function CommentSection({ comments, addComment }) {
 		<div>
 			<Paper className={classes.comment_paper_div} elevation={2}>
 				<Grid container>
-					<Grid container alignContent="flex-start" item xs={12} md={6}>
+					<Grid
+						container
+						direction="column"
+						alignContent="flex-start"
+						item
+						xs={12}
+						md={6}
+						className={classes.comment_paper_header}>
 						<Typography variant="h5">Enjoyed this article?</Typography>
 						<Typography variant="subtitle1">
 							Please leave us a comment
