@@ -11,15 +11,17 @@ function PostBody({ title, author, date, content }) {
 	return (
 		<Paper elevation={0} className={classes.post_body}>
 			<header>
-				<Typography variant="h3">{title}</Typography>
+				<Typography variant="h4">{title}</Typography>
 				<Typography variant="subtitle2">{"By " + author.name}</Typography>
 				<Typography variant="subtitle2">
 					{date.toDateString().slice(4)}
 				</Typography>
 			</header>
-			<Divider light />
+			<Divider light style={{ marginBottom: 16 }} />
 			<div style={{ whiteSpace: "pre-wrap" }}>
-				<Typography variant="body1">{content}</Typography>
+				<Typography variant="body1" style={{ textAlign: "justify" }}>
+					{content}
+				</Typography>
 			</div>
 		</Paper>
 	);

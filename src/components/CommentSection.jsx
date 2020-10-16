@@ -6,7 +6,7 @@ import CommentErrorBoundry from "./ErrorBoundries/CommentErrorBoundry";
 
 const useStyles = makeStyles(theme => ({
 	form_button: { marginTop: 16, alignSelf: "flex-end" },
-	comment_paper_div: { padding: 40 }
+	comment_paper_div: { padding: 40, margin: "36px 0 24px" }
 }));
 
 function CommentSection({ comments, addComment }) {
@@ -27,7 +27,7 @@ function CommentSection({ comments, addComment }) {
 
 	return (
 		<div>
-			<Paper className={classes.comment_paper_div} elevation={2}>
+			<Paper className={classes.comment_paper_div} elevation={1}>
 				<Grid container>
 					<Grid
 						container
@@ -44,7 +44,6 @@ function CommentSection({ comments, addComment }) {
 					</Grid>
 					<Grid item xs={12} md={6}>
 						<Paper
-							component="form"
 							elevation={0}
 							style={{
 								display: "flex",

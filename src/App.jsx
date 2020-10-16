@@ -1,10 +1,24 @@
 import React, { useState, useEffect } from "react";
 import Post from "./components/Post";
+import Header from "./components/Header";
 import BlogErrorBoundry from "./components/ErrorBoundries/BlogErrorBoundry";
 import faker from "faker";
+import { Paper, Container } from "@material-ui/core";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
 function App() {
 	const [post, setPost] = useState(mockPost);
+	const [darkMode, setDarkMode] = useState(false);
+
+	const changeTheme = () => {
+		setDarkMode(dark => !dark);
+	};
+
+	const theme = createMuiTheme({
+		palette: {
+			type: darkMode ? "dark" : "light"
+		}
+	});
 
 	const addComment = comment => {
 		const commentsArray = post.comments;
@@ -13,11 +27,19 @@ function App() {
 	};
 
 	return (
-		<div className="App">
-			<BlogErrorBoundry>
-				<Post post={post} addComment={addComment} />
-			</BlogErrorBoundry>
-		</div>
+		<ThemeProvider theme={theme}>
+			<Paper square elevation={0}>
+				<Header theme={darkMode} changeTheme={changeTheme} />
+				<Paper
+					className="App"
+					elevation={5}
+					style={{ maxWidth: "45em", margin: "0 auto" }}>
+					<BlogErrorBoundry>
+						<Post post={post} addComment={addComment} />
+					</BlogErrorBoundry>
+				</Paper>
+			</Paper>
+		</ThemeProvider>
 	);
 }
 
