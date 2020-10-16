@@ -1,6 +1,5 @@
 import React, { lazy, Suspense } from "react";
 import { Container } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 
 const PostBody = lazy(() => import("./PostBody"));
 const CommentSection = lazy(() => import("./CommentSection"));

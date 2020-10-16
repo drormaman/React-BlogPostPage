@@ -3,7 +3,7 @@ import { Typography, Paper, Divider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
-	post_body: { padding: 24 }
+	post_body: { padding: 16 }
 }));
 
 function PostBody({ title, author, date, content }) {
@@ -19,7 +19,7 @@ function PostBody({ title, author, date, content }) {
 			</header>
 			<Divider light style={{ marginBottom: 16 }} />
 			<div style={{ whiteSpace: "pre-wrap" }}>
-				<Typography variant="body1" style={{ textAlign: "justify" }}>
+				<Typography variant="body1" align="justify">
 					{content}
 				</Typography>
 			</div>

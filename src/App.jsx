@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Post from "./components/Post";
 import Header from "./components/Header";
 import BlogErrorBoundry from "./components/ErrorBoundries/BlogErrorBoundry";
 import faker from "faker";
-import { Paper, Container } from "@material-ui/core";
+import { Paper } from "@material-ui/core";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
 					elevation={5}
 					style={{ maxWidth: "45em", margin: "0 auto" }}>
 					<BlogErrorBoundry>
-						<Post post={post} addComment={addComment} />
+						<Post post={post} addComment={addComment} theme={darkMode} />
 					</BlogErrorBoundry>
 				</Paper>
 			</Paper>
