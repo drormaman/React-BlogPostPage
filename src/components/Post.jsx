@@ -1,10 +1,15 @@
-import React, { lazy, Suspense } from "react";
+import React, { useEffect, lazy, Suspense } from "react";
 import { Container } from "@material-ui/core";
+import { postViewEvent } from "../AnalyticsManager";
 
 const PostBody = lazy(() => import("./PostBody"));
 const CommentSection = lazy(() => import("./CommentSection"));
 
 function Post({ post, addComment }) {
+	useEffect(() => {
+		postViewEvent(post.title);
+	}, [post.title]);
+
 	return (
 		<Container>
 			<Suspense fallback={<h1>loading post...</h1>}>
