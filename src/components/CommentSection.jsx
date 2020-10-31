@@ -3,6 +3,11 @@ import Comment from "./Comment";
 import { TextField, Button, Grid, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import CommentErrorBoundry from "./ErrorBoundries/CommentErrorBoundry";
+import {
+	focusedOnNameInput,
+	focusedOnMessageInput,
+	userSubmittedForm
+} from "../AnalyticsManager";
 
 const useStyles = makeStyles(theme => ({
 	form_button: { marginTop: 16, alignSelf: "flex-end" },
@@ -18,12 +23,11 @@ function CommentSection({ comments, addComment }) {
 	const classes = useStyles();
 
 	const submitComment = () => {
-		console.log(nameInputRef.current.value);
-		console.log(commentInputRef.current.value);
 		addComment({
 			author: nameInputRef.current.value,
 			content: commentInputRef.current.value
 		});
+		userSubmittedForm();
 		nameInputRef.current.value = "";
 		commentInputRef.current.value = "";
 	};
@@ -59,6 +63,7 @@ function CommentSection({ comments, addComment }) {
 								onKeyUp={e =>
 									e.key === "Enter" && commentInputRef.current.focus()
 								}
+								onFocus={() => focusedOnNameInput()}
 							/>
 							<TextField
 								label="Message"
@@ -67,6 +72,7 @@ function CommentSection({ comments, addComment }) {
 								rows={5}
 								multiline
 								onKeyUp={e => e.key === "Enter" && submitComment()}
+								onFocus={() => focusedOnMessageInput()}
 							/>
 							<Button
 								className={classes.form_button}
