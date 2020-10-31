@@ -5,6 +5,7 @@ import BlogErrorBoundry from "./components/ErrorBoundries/BlogErrorBoundry";
 import faker from "faker";
 import { Paper } from "@material-ui/core";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { themeChangeEvent } from "./AnalyticsManager";
 
 function App() {
 	const [post, setPost] = useState(mockPost);
@@ -12,6 +13,7 @@ function App() {
 
 	const changeTheme = () => {
 		setDarkMode(dark => !dark);
+		themeChangeEvent(!darkMode);
 	};
 
 	const theme = createMuiTheme({
